@@ -224,21 +224,21 @@ describe('GET /api/streak', () => {
       const body = await response.text();
 
       expect(body).toContain('2s');
-  });
+    });
 
-  it('accepts the maximum boundary speed "20s"', async () => {
-    const response = await GET(makeRequest({ user: 'octocat', speed: '20s' }));
-    const body = await response.text();
+    it('accepts the maximum boundary speed "20s"', async () => {
+      const response = await GET(makeRequest({ user: 'octocat', speed: '20s' }));
+      const body = await response.text();
 
-    expect(body).toContain('20s');
-  });
+      expect(body).toContain('20s');
+    });
 
-  it('falls back to 8s when speed is a non-integer decimal like "2.0s"', async () => {
-    const response = await GET(makeRequest({ user: 'octocat', speed: '2.0s' }));
-    const body = await response.text();
+    it('falls back to 8s when speed is a non-integer decimal like "2.0s"', async () => {
+      const response = await GET(makeRequest({ user: 'octocat', speed: '2.0s' }));
+      const body = await response.text();
 
-    expect(body).toContain('8s');
-    expect(body).not.toContain('2.0s');
+      expect(body).toContain('8s');
+      expect(body).not.toContain('2.0s');
     });
   });
 
